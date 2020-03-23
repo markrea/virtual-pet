@@ -3,10 +3,14 @@ const AGE_INCREMENT = 1;
 const HUNGER_INCREMENT = 5;
 const HUNGER_DECREMENT = 3;
 const MINIMUM_HUNGER = 0;
+const HUNGER_THRESHOLD = 5;
 
 const FITNESS_DECREMENT = 3;
 const FITNESS_INCREMENT = 4;
 const MAXIMUM_FITNESS = 10;
+const FITNESS_THRESHOLD = 3;
+
+const DEFAULT_CONDITION = "I feel great!";
 
 function Pet(name) {
     this.name = name;
@@ -32,7 +36,22 @@ Pet.prototype.feed = function() {
     } else {
         this.hunger = MINIMUM_HUNGER;
     }
-
-}
+};
+Pet.prototype.checkUp = function() {
+    
+    if (this.fitness <= FITNESS_THRESHOLD && this.hunger >= HUNGER_THRESHOLD ) {
+        return "I am hungry AND I need a walk"
+    }
+    
+    if (this.fitness <= FITNESS_THRESHOLD) {
+        return "I need a walk";
+    }
+    if (this.hunger >= HUNGER_THRESHOLD) {
+        return "I am hungry";
+    }
+    else { 
+        return DEFAULT_CONDITION;
+    }
+};
 
 module.exports = Pet;
