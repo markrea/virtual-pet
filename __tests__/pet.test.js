@@ -40,6 +40,10 @@ describe('constructor', () => {
         pet.growUp();
           expect(pet.fitness).toEqual(7);
       });
+     it('throws an error if the pet is not alive', () => {
+        pet.age = 30;
+        expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
+      });
   });
 
   describe('walk', () => {
@@ -53,6 +57,10 @@ describe('constructor', () => {
       pet.walk();
         expect(pet.fitness).toEqual(10);
     });
+    it('throws an error if the pet is not alive', () => {
+      pet.age = 30;
+      expect(() => pet.walk()).toThrow('Your pet is no longer alive :(');
+    });
   });
 
   describe('feed', () => {
@@ -65,6 +73,10 @@ describe('constructor', () => {
       pet.hunger = 2;
       pet.feed();
        expect(pet.hunger).toEqual(0);
+    });
+    it('throws an error if the pet is not alive', () => {
+      pet.age = 30;
+      expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
     });
   });
   describe('checkUp', () => {
@@ -89,12 +101,13 @@ describe('constructor', () => {
         pet.hunger = 2;
          expect(pet.checkUp()).toEqual("I feel great!");
         });
+      it('throws an error if the pet is not alive', () => {
+        pet.age = 30;
+         expect(pet.checkUp()).toBe('Your pet is no longer alive :(');
+      });
 
-        it('temperature is greater than  returns "I feel great!', () => {
-          pet.fitness = 7;
-          pet.hunger = 2;
-           expect(pet.checkUp()).toEqual("I feel great!");
-          });
+  });
+       
 
    describe('isAlive', () => {
         it('if fitness is 0 or less return false', () => {
@@ -117,5 +130,3 @@ describe('constructor', () => {
             expect(pet.isAlive).toBe(true);
              });
           });
-  })
-
