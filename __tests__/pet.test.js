@@ -70,35 +70,52 @@ describe('constructor', () => {
   describe('checkUp', () => {
     it('if fitness is 3 or less returns "I need a walk"', () => {
     pet.fitness = 2;
-    pet.checkUp();
       expect(pet.checkUp()).toEqual("I need a walk");
     });
 
     it('if hunger is 5 or more returns "I am hungry"', () => {
       pet.hunger = 6;
-      pet.checkUp();
         expect(pet.checkUp()).toEqual("I am hungry");
       });
 
     it('if hunger is 5 or more and fitness is 3 or less returns "I am hungry AND I need a walk', () => {
-      pet.fitness = 2
+      pet.fitness = 2;
       pet.hunger = 6;
-      pet.checkUp();
         expect(pet.checkUp()).toEqual("I am hungry AND I need a walk");
       });
 
       it('if hunger is less than 5 and fitness is more than 3 returns "I feel great!', () => {
-        pet.fitness = 7
+        pet.fitness = 7;
         pet.hunger = 2;
-        pet.checkUp();
          expect(pet.checkUp()).toEqual("I feel great!");
         });
 
         it('temperature is greater than  returns "I feel great!', () => {
-          pet.fitness = 7
+          pet.fitness = 7;
           pet.hunger = 2;
-          pet.checkUp();
            expect(pet.checkUp()).toEqual("I feel great!");
+          });
+
+   describe('isAlive', () => {
+        it('if fitness is 0 or less return false', () => {
+         pet.fitness = 0;
+          expect(pet.isAlive).toBe(false);
+            });
+            
+        it('if hunger is 10 or more return false', () => {
+          pet.hunger = 10;
+            expect(pet.isAlive).toBe(false);
+                 });   
+        it('if age is 30 or more return false', () => {
+          pet.age = 30;
+            expect(pet.isAlive).toBe(false);
+                     });
+         it('if fitness is above minimum, hunger is below maximum and age is less than 300 returns true', () => {
+          pet.fitness = 4;
+          pet.hunger = 8;
+          pet.age = 26;
+            expect(pet.isAlive).toBe(true);
+             });
           });
   })
 

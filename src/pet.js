@@ -18,6 +18,11 @@ function Pet(name) {
     this.hunger = MINIMUM_HUNGER;
     this.fitness = MAXIMUM_FITNESS;
 } 
+Pet.prototype = {
+    get isAlive() {
+      return this.age < 30 && this.hunger < 10 && this.fitness > 0;
+    }
+  };
 Pet.prototype.growUp = function() {
     this.age += AGE_INCREMENT;
     this.hunger += HUNGER_INCREMENT;
