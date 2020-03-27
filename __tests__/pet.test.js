@@ -130,4 +130,10 @@ describe('constructor', () => {
             expect(pet.isAlive).toBe(true);
              });
           });
-         
+   describe('adoptsChild', () => {
+     it('takes object as a child', () => {
+       const child = new Pet('Dave');
+       pet.adoptsChild(child);
+        expect(pet.children).toEqual([{name: 'Dave', age: 0, hunger: 0, fitness: 10, children: []}]);
+     })
+   })      
