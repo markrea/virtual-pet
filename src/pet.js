@@ -21,6 +21,7 @@ function Pet(name) {
     this.age = 0;
     this.hunger = MINIMUM_HUNGER;
     this.fitness = MAXIMUM_FITNESS;
+    this.children = [];
 } 
 Pet.prototype = {
     get isAlive() {
@@ -73,5 +74,10 @@ Pet.prototype.checkUp = function() {
         return DEFAULT_CONDITION;
     }
 };
+Pet.prototype.adoptsChild = function(child) {
+    let childArray = this.children
+    childArray.push(child);
+}
+
 
 module.exports = Pet;
