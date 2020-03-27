@@ -130,3 +130,4 @@ describe('constructor', () => {
             expect(pet.isAlive).toBe(true);
              });
           });
+         
