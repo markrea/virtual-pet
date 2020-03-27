@@ -77,6 +77,7 @@ Pet.prototype.checkUp = function() {
 Pet.prototype.adoptsChild = function(child) {
     let childArray = this.children
     childArray.push(child);
+
 }
 
 
